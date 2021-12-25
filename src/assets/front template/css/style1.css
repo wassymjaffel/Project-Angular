@@ -1,0 +1,144 @@
+
+/* top-header */
+.header-most-top p {
+    text-align: center;
+    color: #fff;
+    font-weight: 600;
+    padding: 8px;
+    letter-spacing: 2px;
+    background: #1accfd;
+}
+/* //top-header */
+/*-- header-bottom --*/
+/*-- Header Lists --*/
+.header ul li {
+    display: inline-block;
+    width: 19%;
+    text-align: center;
+    color: #000;
+    font-size: 13px;
+    padding: 7px 0;
+    letter-spacing: 1px;
+    border-right: 1px solid rgba(18, 18, 18, 0.18);
+}
+.header ul li a {
+     color: #000;
+    text-decoration: none;
+}
+.header ul li span {
+    margin-right: 7px;
+    color: #FF5722;
+    font-size: 15px;
+}
+.header-right {
+    text-align: right;
+}
+.header-left{
+    text-align: left;
+}
+.header-bot_inner_wthreeinfo_header_mid {
+    margin: 0 auto;
+    width: 90%;
+}
+
+/*-- logo --*/
+.logo_agile {
+    text-align: center;
+}
+.logo_agile span {
+    color: #FF5722;
+}
+.logo_agile h1 a {
+    color: #000;
+    font-size: 38px;
+	font-style: italic;
+	text-decoration: none;
+}
+.logo_agile h1 a:hover {
+  text-decoration:none;
+}
+.header-left img {
+    width: 73%;
+}
+.header-bot {
+    padding: 15px 0 20px;
+}
+/*-- //logo --*/
+/*-- model_signin --*/
+.modal-body.modal-body-sub_agile input[type="text"], .modal-body.modal-body-sub_agile input[type="email"], .modal-body.modal-body-sub_agile input[type="password"] {
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #777;
+    padding: 10px 0;
+    border: 0;
+    width: 100%;
+    border-bottom: 1px solid #dcdcdc;
+    background: none;
+    -webkit-appearance: none;
+    outline: none;
+    margin-bottom: 20px;
+}
+.modal-body.modal-body-sub_agile input[type="submit"] {
+    border: none;
+    padding: 10px 40px;
+    font-size: 14px;
+    outline: none;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background: #1accfd;
+    color: #fff;
+    margin: 20px 0;
+}
+.modal-body.modal-body-sub_agile input[type="submit"]:hover{
+   background: #000;
+}
+h3.agileinfo_sign {
+    font-size: 33px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #FF5722;
+}
+h3.agileinfo_sign span {
+    font-weight:300;
+}
+.modal-content {
+    position: relative;
+}
+.main-mailposi span {
+    position: absolute;
+    font-size: 150px;
+    color: #e8e8e8;
+    opacity: .4;
+    right: 7%;
+    transform: rotate(-35deg);
+    -ms-transform: rotate(-35deg);
+    -webkit-transform: rotate(-35deg);
+}
+/* placeholder */
+.modal-body.modal-body-sub_agile ::-webkit-input-placeholder{
+	color:#212121 !important;
+}
+/* //placeholder */
+.modal-body.modal-body-sub_agile p a {
+    color: #FF5722;
+}
+.modal-body.modal-body-sub_agile p {
+    line-height: 2em;
+    color: #000;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+.modal-body.modal-body-sub_agile {
+    padding:0 2em 2em;
+    margin-top: 1em;
+}
+/*-- //model_signin --*/
+
+/* //navigation */
+
+/*-- //header-bottom --*/

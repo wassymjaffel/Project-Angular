@@ -1,0 +1,29 @@
+
+<div class="main-header">
+
+
+<div class="container" style="margin-top: 94px;">
+    <h1>Modifier stock</h1>
+    <div class="row gutters">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+                <div class="card-body">
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h6 class="mb-2 text-primary">Modifier les Stocks</h6>
+                            </div>
+<form #f="ngForm" class="form-group">
+                  <label for="idStock">idStock</label>
+    <tr><input type="number" class="form-control" name="idStock" [(ngModel)]="stock.idStock" ></tr>
+                  <label for="qte">Quantité</label>
+    <tr><input type="number" class="form-control" name="qte" [(ngModel)]="stock.qte" ></tr>
+                   <label for="QteMin">QteMin</label>
+     <tr><input type="number" class="form-control" name="qteMin" [(ngModel)]="stock.qteMin" ></tr>
+                   <label for="libelle">Libelle</label>
+     <tr><input type="text" class="form-control" name="libelleStock" [(ngModel)]="stock.libelleStock"></tr>
+     
+     <button class="btn btn-success" (click)="updateStock()">Modifier</button>
+ </form>
+ <router-outlet></router-outlet>
+
+</div>

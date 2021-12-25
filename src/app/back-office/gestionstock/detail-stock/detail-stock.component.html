@@ -1,0 +1,77 @@
+<div class="main-header">
+<div class="row gutters-sm">
+  <div class="col-md-4 mb-3">
+    <div class="card "  style="height: 99% ;width: 700px;">
+    <div class="card-body" >
+      <div class="d-flex flex-column align-items-center text-center"  >
+      <img src="https://www.codeur.com/blog/wp-content/uploads/2018/06/logiciels-gestion-stock-700x423.jpg" style="width: 200px;" alt="Admin" class="rounded-circle" width="100">
+      <div class="mt-3">
+        <h4>Stock</h4>
+        <p class="text-secondary mb-1">Detail Stock</p>
+
+  <div class="col-md-8">
+    <div class="card mb-3">
+    <div class="card-body">
+      <div class="row">
+      <div class="col-sm-4:">
+        <h6 class="mb-0">idStock:</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        {{stock?.idStock}}
+      </div>
+      </div>
+      <hr>
+      <div class="row">
+      <div class="col-sm-4:">
+        <h6 class="mb-0">libelle:</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        {{stock?.libelleStock}}
+      </div>
+      </div>
+      <hr>
+      <div class="row">
+      <div class="col-sm-4:">
+        <h6 class="mb-0">Quantite:</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        {{stock?.qte}}
+      </div>
+      </div>
+      <hr>
+      <div class="row">
+      <div class="col-sm-4:">
+        <h6 class="mb-0">Quantite Min:</h6>
+      </div>
+      <div class="col-sm-9 text-secondary">
+        {{stock?.qteMin}}
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+
+      <img src="\assets\imgs\-QRCODE.png" style="width: 100px;" alt="Admin" class="rounded-circle" width="100%">
+        </div>
+        <div class="col-sm-8" >
+          <div class="card">
+            <div class="card-body" >
+              <h5 class="d-flex align-items-center mb-3">Stock Status</h5>
+              <p>Quantite</p>
+              <div class="progress mb-3" style="height: 5px">
+                <div class="progress-bar bg-primary" role="progressbar" style="width:20px" aria-valuenow="150" aria-valuemin="0" aria-valuemax="200"></div>
+              </div>
+              <p>Quantite Min</p>
+              <div class="progress mb-3" style="height: 5px">
+                <div class="progress-bar bg-danger " role="progressbar" style="width: 30px" aria-valuenow="150" aria-valuemin="0" aria-valuemax="200"></div>
+
+  </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<router-outlet></router-outlet>
+
+</div>

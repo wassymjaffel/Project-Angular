@@ -1,0 +1,30 @@
+<div class="main-header">
+<div class="container" style="margin-top: 94px;">
+    <h1>Produits du rayon</h1>
+    <div class="row gutters">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+                <div class="card-body">
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h6 class="mb-2 text-primary">( {{productlist ? productlist.length :('0') }} )</h6>
+                                <table class="table table-bordered w-50" cellspacing="1" style=" width: 100%; background: #dadada78; border-radius: 5px; padding: 7px; ">
+                                <tr>
+                                    <th>id Produit</th>
+                                    <th>code</th>
+                                    <th>Libelle</th>
+                                    <th>Prix Unitaire</th>
+                                </tr>
+                                <tr *ngFor="let u of productlist;let counter=index  ">
+
+                                    <td > {{ u.idProduit }}</td>
+                                   <td > {{ u.code }}</td>
+                                   <td >{{ u.lieblle }}</td>
+                                   <td>{{u.prixUnitaire}}</td>
+                                   </tr>
+                                </table>
+                            </div>
+
+
+
+</div>

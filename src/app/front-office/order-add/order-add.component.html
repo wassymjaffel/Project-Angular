@@ -1,0 +1,61 @@
+<div class="contact-w3l">
+  <div class="container">
+    <!-- tittle heading -->
+    <h3 class="tittle-w3l">confirm-order
+      <span class="heading-style">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+    </h3>
+    <!-- //tittle heading -->
+    <!-- contact -->
+    <div class="contact agileits">
+      <div class="contact-agileinfo">
+        <div class="contact-form wthree">
+          <form action="#" method="post"  #f="ngForm" class="form-group">
+
+            <p class="#41414d">Shipping-address</p>
+            <input type="text" class="form-control" name="street" [(ngModel)]="a.street"  placeholder="Street" required="">
+            <input type="text" class="form-control" name="city" [(ngModel)]="a.city" placeholder="City" required="">
+            <input type="text" class="form-control" name="region" [(ngModel)]="a.region" placeholder="MetroArea/Region/State/Province/Canton" required="">
+            <input type="text" class="form-control" name="country" [(ngModel)]="a.country" placeholder="Country" required="">
+
+            <p class="#41414d">Shipping-date</p>
+            <input class="text" class="form-control" type="date" [(ngModel)]="o.order_date"name="subject" placeholder="Shipping-date" required=""><br><br>
+            <button type="button" class="btn btn-dark" (click)="setAddress(f.value)">confirm address</button>
+
+
+
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-right wthree">
+      <form>
+        <div *ngFor="let u of list">
+          <div class="column">
+            <div class="row">
+              <div class="card">
+                <img src="assets/front template/images/keyboard.png" style="width: 150px;height: 150px">
+                <span class="product-new-top">{{u.lieblle}}</span>
+                <div class="info-product-price">
+                  <span class="item_price">{{u.prixUnitaire}}$</span>
+                </div>
+                <button type="button" class="btn btn-dark" (click)="addtocart(u.idProduit)">add to cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form
+      ></div>
+
+
+
+    <!-- //contact -->
+
+    <router-outlet></router-outlet>
+  </div></div>

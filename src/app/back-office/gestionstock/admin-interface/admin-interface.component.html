@@ -1,0 +1,104 @@
+<!--Header start-->
+
+<!--header end-->
+
+<div class="main-header">
+<div class="row" style="width: 98%;margin: auto;">
+  <div class="col-md-12 col-lg-12">
+      <div class="row" style="width: 98%;margin: auto;">
+          <h2
+              style="width: fit-content;margin-bottom: 7px;margin-top: 7px;background-color: #e0e0e0;padding: 5px 8px;border-radius: 9px;border: 1px solid #bababa;float: left;">
+              Gérer les Stocks</h2>
+          <button bind-disabled="f.invalid" (click)="saveStocks(f.value)" class="btn btn-primary"
+             click style="width: 111px;float: right;height: fit-content;font-size: 22px;margin-left: 11px;margin: auto 9px;">Ajouter</button>
+      </div>
+
+
+
+      <form #f="ngForm" class="form-group">
+        <label for="libelleStock"> LibelleStock</label>
+         <tr><input type="text" class="form-control" name="libelleStock" [(ngModel)]="s.libelleStock" required pattern="^[a-zA-Z0-9]{8,}?" #code="ngModel" ></tr>
+         <div *ngIf="code.invalid && code.touched">
+          <div *ngIf="code.errors?.['required']">
+          </div>
+          <div *ngIf="code.errors?.['pattern']" style="color: red;">
+               <small>doit contenir 8 caractéres</small>
+          </div>
+          <div class="alert alert-danger" role="alert" style="width: 210px;">
+               obligatoire!
+              </div>
+      </div>
+
+         <label for="qte">Quantité</label>
+          <tr><input type="number"   class="form-control" name="qte" [(ngModel)]="s.qte"  required pattern="[1-90-9]*" #Quantité="ngModel" ></tr>
+
+          <label for="qteMin">QteMin</label>
+          <tr><input type="number" class="form-control" name="qteMin" [(ngModel)]="s.qteMin" required pattern="[1-90-9]*"   ></tr>
+      </form>
+
+      <form class="form-inline my-2 my-lg-0">
+        <input  style="margin: auto;" type="search" (ngModelChange)="Searchstock(key.value)" #key="ngModel" ngModel
+         name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search stock..."  >
+      </form>
+
+
+
+  <button class="btn btn-secondary" (click)="getStocks()" click style="width: 111px;font-size:22 px;margin: auto 9px;" >List_Stock</button>
+
+  <table id="#" class="table table-striped">
+
+      <thead   >
+
+          <tr >
+            <th scope="row">#</th>
+            <th scope="col">Quantité</th>
+            <th scope="col">QteMin</th>
+            <th scope="col">LibelleStock</th>
+            <th scope="col" >Actions</th>
+            <th scope="col" style="width: 5%;"></th>
+            <th scope="col" style="width: 5%;"></th>
+            <th scope="col" style="width: 5%;"></th>
+            <th scope="col" style="width: 5%;"></th>
+
+
+
+          </tr>
+        </thead>
+
+
+    <tbody>
+
+      <tr *ngFor="let i of list  |orderBy:key :reverse |paginate:{itemsPerPage:5,currentPage:p}">
+
+        <td >
+          <img src="http://becotad.com/wp-content/uploads/2017/12/stock.jpg" style="width: 20% "  alt="">
+        <a class="user-link" style="font-size: small">...</a>
+          {{ i.idStock }}</td>
+       <td > {{ i.qte }}</td>
+       <td >{{ i.qteMin }}</td>
+       <td>{{i.libelleStock}}</td>
+
+
+
+
+     <div>
+
+      <td><button class="btn btn-info" ><a style=" color: white; " [routerLink]="['../detailstock',i.idStock]" routerLinkActive="active">info</a></button> </td>
+      <td><button (click)=deleteStock(i.idStock) class="btn"><i class="fa fa-trash" style="color: red;"></i></button>  </td>
+       <td><button class="btn btn-success" >
+            <a style=" color: white; " [routerLink]="['../Editpath',i.idStock]" routerLinkActive="active">Modifier</a></button> </td>
+
+        <td> <button class="btn btn-primary" ><a style=" color: white; "  [routerLink]="['../produitsfromstock',i.idStock]" routerLinkActive="active">Produits</a></button> </td>
+
+        <td><button class="btn btn-warning" ><a style=" color: white; " [routerLink]="['../UpdateProduit',i.idStock]" routerLinkActive="active"> Products</a></button> </td>
+       </div>
+    </tr>
+  </tbody>
+  </table>
+  <pagination-controls (pageChange)="p= $event"></pagination-controls>
+
+  <router-outlet></router-outlet>
+
+
+
+</div>

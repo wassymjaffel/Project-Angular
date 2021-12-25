@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<div class="main-header">
+<body >
+
+<div>&nbsp;</div>
+<div class="card">
+  <div class="card-header">
+
+    <h2 class="card-title" style="color: #0c84ff;font-weight: bold">Gestion Clients</h2>
+  </div>
+  <!-- /.card-header -->
+  <div class="card-body">
+    <table class="table table-bordered table-striped" id="example1">
+      <thead>
+      <tr>
+
+        <th style="color: #FFB52A">Nom</th>
+        <th style="color: #FFB52A">Prenom</th>
+        <th style="color: #FFB52A"> Date Naissance</th>
+        <th style="color: #FFB52A">Email</th>
+        <th style="color: #FFB52A">Profession</th>
+        <th style="color: #FFB52A">Catégorie</th>
+        <th></th>
+        <th><button (click)="UpdateTable2()" class="fa fa-refresh" style="background-color: #0c84ff;color: white" data-toggle="tooltip" data-placement="right" title="Refrech Table"></button></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let i of list;let counter=index">
+
+        <td>{{ i.nom }}</td>
+        <td>{{i.prenom }}</td>
+        <td>{{ i.dateNaissance }}</td>
+        <td> {{ i.email }} </td>
+        <td> {{ i.profession }} </td>
+        <td> {{ i.categorieClient }} </td>
+        <td>
+          <button (click)=UpdateClient(f.value,i.idClient);f.reset();UpdateTable() class="fas fa-edit" style="margin-left: 20px;color:white;background-color: #FFB52A "
+                 type="submit" value="Update&#10004;" [disabled]="!(f.touched)"data-toggle="tooltip" data-placement="right" title="Fill in the fields to update in the section below">
+          </button>
+        </td>
+        <td>
+
+          <button (click)=deleteClient(i.idClient);UpdateTable() class="fa fa-trash-o" style="color: white;background-color: #d40e0e" data-toggle="tooltip" data-placement="right" title="Delete Client">
+            </button>
+        </td>
+        <td>
+          <button (click)=MakeAdmin(i.idClient);UpdateTable()  style="color: white ;background-color: transparent;height: 30px" data-toggle="tooltip" data-placement="right" title="Make Admin">
+            <img src="assets/imgs/admin.png"width="15"  />
+          </button>
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card" data-toggle="collapse" data-target="#addsection">
+  <div class="card-header">
+    <h4 class="card-title" style="color: #0c84ff;font-weight: bold">Add / Update </h4>
+    <h3 style="float: right;margin-right: 100px;color: #0c84ff">&#9660;</h3>
+  </div>
+</div>
+
+<div id="addsection">
+  <img src="../../../assets/imgs/client.jpg" width="450px" height="250px" style="float: right;margin-right: 450px;margin-bottom: 80px">
+  <form #f="ngForm" class="form-group">
+    <div>
+      <label style="color: #FFB52A ;margin-left: 120px">Nom</label>
+      <input #name="ngModel"  [(ngModel)]="c.nom" name="nom" pattern="[a-zA-Z]*" required type="text" >
+      <div *ngIf="name.invalid && name.touched">
+        <div *ngIf="name.errors?.['required']" class="alert">
+          Required
+        </div>
+        <div *ngIf="name.errors?.['pattern']" class="alert">
+          name not accepted use [a-zA-Z] only
+        </div>
+      </div>
+
+
+
+    </div>
+    <div>
+      <label style="color: #FFB52A;margin-left: 98px">Prenom</label>
+      <input #prename="ngModel" [(ngModel)]="c.prenom" name="prenom" pattern="[a-zA-Z]*" required type="text">
+      <div *ngIf="prename.invalid && prename.touched">
+        <div *ngIf="prename.errors?.['required']" class="alert">
+          Required
+        </div>
+        <div *ngIf="prename.errors?.['pattern']" class="alert">
+          prenom not accepted use [a-zA-Z] only
+        </div>
+      </div>
+    </div>
+    <div>
+      <label style="color: #FFB52A;margin-left: 40px">Date Naissance</label>
+      <input #dateNaissance="ngModel" [(ngModel)]="c.dateNaissance" name="dateNaissance"  required
+             type="date">
+      <div *ngIf="dateNaissance.invalid && dateNaissance.touched">
+        <div *ngIf="dateNaissance.errors?.['required']" class="alert">
+          Required
+        </div>
+      </div>
+
+    </div>
+    <div>
+      <label style="color: #FFB52A;margin-left: 110px">Email</label>
+      <input #email="ngModel" [(ngModel)]="c.email" name="email" required type="email">
+      <div *ngIf="email.invalid && email.touched">
+        <div *ngIf="email.errors?.['required']" class="alert">
+          Required
+        </div>
+
+      </div>
+
+    </div>
+    <div>
+      <label style="color: #FFB52A;margin-left: 79px">Password</label>
+      <input #password="ngModel" [(ngModel)]="c.password" minlength="8" name="password" pattern="^[a-zA-Z0-9]{8,}?"
+             required type="password">
+      <div *ngIf="password.invalid && password.touched">
+        <div *ngIf="password.errors?.['required']">
+          Required
+        </div>
+        <div *ngIf="password.errors?.['pattern']">
+          required minlength="8" [a-zA-Z0-9]
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <label style="color: #FFB52A;margin-left: 70px"> Profession</label>
+      <select #profess="ngModel" [(ngModel)]="c.profession" name="profession" required>
+        <option value="Docteur">Docteur</option>
+        <option selected value="Ingenieur">Ingenieur</option>
+        <option value="Etudiant">Etudiant</option>
+        <option value="Commercial">Commercial</option>
+        <option value="Cadre">Cadre</option>
+        <option value="Autre">Autre</option>
+      </select>
+
+    </div>
+    <div>
+      <label style="color: #FFB52A;margin-left: 27px"> Categorie Client</label>
+      <select #categ="ngModel" [(ngModel)]="c.categorieClient" name="categorieClient" required>
+        <option value="Fidele">Fidele</option>
+        <option selected value="ordinaire">ordinaire</option>
+        <option value="Premuim">Premuim</option>
+      </select>
+
+
+    </div>
+    <!--ADD-->
+    <button (click)=saveClient(f.value);f.reset(); class="fas fa-user-plus" style="width: 50px;height: 30px;margin-left: 200px;background-color: #ffffff;color: #ffb52a" type="submit"
+            value="" [disabled]="name.invalid||prename.invalid||email.invalid||password.invalid||categ.invalid||profess.invalid" data-toggle="tooltip" data-placement="right" *ngIf="f.valid" title="Add Client">
+    </button>
+    <!--ADD END-->
+  </form>
+</div>
+</body>
+</div>
+<style>
+  .alert {
+    padding: 20px;
+    background-color: #f44336; /* Red */
+    color: white;
+    margin-bottom: 15px;
+    width: 400px;
+  }
+</style>
+
+</html>
+

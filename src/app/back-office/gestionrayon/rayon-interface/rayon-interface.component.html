@@ -1,0 +1,94 @@
+<div class="main-header">
+
+
+
+<div class="row" style="width: 98%;margin: auto;">
+    <div class="col-md-12 col-lg-12">
+        <div class="row" style="width: 98%;margin: auto;">
+            <h2
+                style="width: fit-content;margin-bottom: 7px;margin-top: 7px;background-color: #e0e0e0;padding: 5px 8px;border-radius: 9px;border: 1px solid #bababa;float: left;">
+                Gérer les Rayons</h2>
+            <button [hidden]="f.invalid" (click)="saveRayons(f.value)" class="btn btn-primary"
+               click style="width: 111px;float: right;height: fit-content;font-size: 22px;margin-left: 11px;margin: auto 9px;">Ajouter</button>
+        </div>
+  <form #f="ngForm" class="form-group">
+      <label> Code</label>
+       <tr><input type="text" class="form-control" name="code" [(ngModel)]="r.code"    #code="ngModel" required pattern="^[a-zA-Z0-9]{8,}?" #test="ngModel"></tr>
+
+       <div *ngIf="test.invalid && test.touched">
+        <div *ngIf="test.errors?.['required']">
+        </div>
+        <div *ngIf="test.errors?.['pattern']" style="color: red;">
+             <small>doit contenir 8 caractéres</small>
+        </div>
+        <div class="alert alert-danger" role="alert" style="width: 210px;">
+             obligatoire!
+            </div>
+    </div>
+
+
+
+       <label for="libelle">Libelle</label>
+        <tr><input type="text"  class="form-control" name="libelle" [(ngModel)]="r.libelle" required pattern="^[a-zA-Z0-9]{8,}?" #libelle="ngModel"></tr>
+
+
+    </form>
+
+    <form class="form-inline my-2 my-lg-0">
+      <input style="margin: auto;" type="search" (ngModelChange)="Searchrayon(key.value)" #key="ngModel" ngModel
+       name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search rayon..." required >
+    </form>
+
+
+    <button class="btn btn-secondary" (click)="getRayons()" click style="width: 125px;font-size:22px;margin: auto 9px;" >List_Rayon</button>
+    <table id="#" class="table table-striped"  >
+
+
+        <thead>
+
+          <tr >
+            <th scope="col">#</th>
+            <th scope="col">code</th>
+            <th scope="col">libelle</th>
+            <th scope="col">Actions</th>
+            <th scope="col" style="width: 5%;"></th>
+            <th scope="col" style="width: 5%;"></th>
+            <th scope="col" style="width: 5%;"></th>
+          </tr>
+        </thead>
+
+
+    <tbody>
+      <tr *ngFor="let i of list | orderBy:key :reverse |paginate:{itemsPerPage:5,currentPage:p}">
+
+        <td > 	<img src="http://becotad.com/wp-content/uploads/2017/12/stock.jpg" style="width: 10%" alt="">
+          <a href="#" class="user-link" style="font-size: small">...</a>
+          {{ i.idRayon }}</td>
+       <td > {{ i.code }}</td>
+       <td >{{ i.libelle }}</td>
+
+
+       <div>
+
+        <td><button class="btn btn-info" ><a style=" color: white; " [routerLink]="['../detailrayon',i.idRayon]" routerLinkActive="active">Info</a></button> </td>
+        <td><button (click)=deleteRayon(i.idRayon) class="btn"><i class="fa fa-trash" style="color: red;"></i></button>  </td>
+        <td><button class="btn btn-success"  >
+
+          <a style=" color: white; " [routerLink]="['../EditpathRayon',i.idRayon]" routerLinkActive="active">Modifier</a></button></td>
+          <td><button class="btn btn-primary" ><a style=" color: white; " [routerLink]="['../produitsfromrayon',i.idRayon]" routerLinkActive="active">Produits</a></button> </td>
+
+      </div>
+
+       </tr>
+
+    </tbody>
+
+    </table>
+    <pagination-controls (pageChange)="p= $event"></pagination-controls>
+
+
+
+
+
+
+  </div>

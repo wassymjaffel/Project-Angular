@@ -1,0 +1,81 @@
+
+
+<div class="content-wrapper">
+
+  <table mat-table class="table table-striped table-dark" dataSource="dataSource" >
+
+    <thead class="thead-dark">
+
+    <tr>
+      <th >order_id</th>
+      <th >order_date</th>
+      <th >order_address</th>
+      <th >order_status</th>
+      <th >order_custumer</th>
+      <th >cancel-order</th>
+      <th >edit-order</th>
+    </tr>
+    </thead>
+
+
+    <tbody>
+    <tr *ngFor="let i of list| paginate : {
+            itemsPerPage: pageSize,
+            currentPage: page,
+            totalItems: count
+          };;let counter=index">
+
+      <td > {{ i.order_id }}</td>
+      <td > {{ i.order_date }}</td>
+      <td >{{ i.order_address }}</td>
+      <td>{{i.order_status}}</td>
+      <td >
+        {{i.customer.email}}
+      </td>
+      <td><button class="btn btn-danger" (click)=deleteOrder(i.order_id) >delete</button></td>
+      <td>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form #f="ngForm" class="form-group">
+
+    <tr><input class="form-control" name="order_id"  [(ngModel)]="o.order_id" ></tr>
+    <tr><input class="form-control" name="order_address"  [(ngModel)]="o.order_address" ></tr>
+    <tr><input  class="form-control" name="order_date"  [(ngModel)]="o.order_date" ></tr>
+    <tr><input class="form-control" name="order_status"  [(ngModel)]="o.order_status"></tr>
+    <button class="button btn-secondary"(click)="updateOrder(f.value,o.order_id)" >update</button>
+    </form>
+</div>
+
+</div>
+</div>
+</div>
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" (click)=getOrder(i.order_id)>
+  Update
+</button>
+
+</td>
+<td><button class="btn btn-warning" (click)=Email(i.customer.idClient) >SendEmail</button></td>
+
+</tr>
+</tbody>
+
+</table>
+<pagination-controls
+  previousLabel="Prev"
+  nextLabel="Next"
+  [responsive]="true"
+  (pageChange)="handlePageChange($event)"
+></pagination-controls>
+</div>
+
+

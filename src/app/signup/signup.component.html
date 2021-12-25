@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <!--Made with love by Mutiullah Samim -->
+
+  <!--Bootsrap 4 CDN-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <!--Fontawesome CDN-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+  <!--Custom styles-->
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body >
+<div class="container" >
+  <div class="d-flex justify-content-center h-100">
+    <div class="card">
+      <div class="card-header">
+        <h3>Sign In</h3>
+        <div class="d-flex justify-content-end social_icon">
+          <span><i class="fab fa-facebook-square"></i></span>
+          <span><i class="fab fa-google-plus-square"></i></span>
+          <span><i class="fab fa-twitter-square"></i></span>
+        </div>
+      </div>
+      <div class="card-body">
+        <form #f="ngForm" class="form-group">
+          <div>
+            <label style="color: #FFB52A ;margin-left: 120px">Nom</label>
+            <input #name="ngModel"  [(ngModel)]="c.nom" name="nom" pattern="[a-zA-Z]*" required type="text" >
+            <div *ngIf="name.invalid && name.touched">
+              <div *ngIf="name.errors?.['required']" class="alert">
+                Required
+              </div>
+              <div *ngIf="name.errors?.['pattern']" class="alert">
+                name not accepted use [a-zA-Z] only
+              </div>
+            </div>
+
+
+
+          </div>
+          <div>
+            <label style="color: #FFB52A;margin-left: 98px">Prenom</label>
+            <input #prename="ngModel" [(ngModel)]="c.prenom" name="prenom" pattern="[a-zA-Z]*" required type="text">
+            <div *ngIf="prename.invalid && prename.touched">
+              <div *ngIf="prename.errors?.['required']" class="alert">
+                Required
+              </div>
+              <div *ngIf="prename.errors?.['pattern']" class="alert">
+                prenom not accepted use [a-zA-Z] only
+              </div>
+            </div>
+          </div>
+          <div>
+            <label style="color: #FFB52A;margin-left: 40px">Date Naissance</label>
+            <input #dateNaissance="ngModel" [(ngModel)]="c.dateNaissance" name="dateNaissance"  required
+                   type="date">
+            <div *ngIf="dateNaissance.invalid && dateNaissance.touched">
+              <div *ngIf="dateNaissance.errors?.['required']" class="alert">
+                Required
+              </div>
+            </div>
+
+          </div>
+          <div>
+            <label style="color: #FFB52A;margin-left: 110px">Email</label>
+            <input #email="ngModel" [(ngModel)]="c.email" name="email" required type="email">
+            <div *ngIf="email.invalid && email.touched">
+              <div *ngIf="email.errors?.['required']" class="alert">
+                Required
+              </div>
+
+            </div>
+
+          </div>
+          <div>
+            <label style="color: #FFB52A;margin-left: 79px">Password</label>
+            <input #password="ngModel" [(ngModel)]="c.password" minlength="8" name="password" pattern="^[a-zA-Z0-9]{8,}?"
+                   required type="password">
+            <div *ngIf="password.invalid && password.touched">
+              <div *ngIf="password.errors?.['required']">
+                Required
+              </div>
+              <div *ngIf="password.errors?.['pattern']">
+                required minlength="8" [a-zA-Z0-9]
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <label style="color: #FFB52A;margin-left: 70px"> Profession</label>
+            <select #profess="ngModel" [(ngModel)]="c.profession" name="profession" required>
+              <option value="Docteur">Docteur</option>
+              <option selected value="Ingenieur">Ingenieur</option>
+              <option value="Etudiant">Etudiant</option>
+              <option value="Commercial">Commercial</option>
+              <option value="Cadre">Cadre</option>
+              <option value="Autre">Autre</option>
+            </select>
+
+          </div>
+          <div>
+            <label style="color: #FFB52A;margin-left: 27px"> Categorie Client</label>
+            <select #categ="ngModel" [(ngModel)]="c.categorieClient" name="categorieClient" required>
+              <option value="Fidele">Fidele</option>
+              <option selected value="ordinaire">ordinaire</option>
+              <option value="Premuim">Premuim</option>
+            </select>
+
+
+          </div>
+          <!--ADD-->
+          <div class="form-group">
+            <input type="submit" name="login" value="Signup" class="btn float-right login_btn"
+                   (click)="saveClient(f.value);f.reset(); "   >
+          </div>
+          <!--ADD END-->
+        </form>
+      </div>
+      <div class="card-footer">
+        <div class="d-flex justify-content-center links">
+
+        </div>
+        <div class="d-flex justify-content-center">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>
+

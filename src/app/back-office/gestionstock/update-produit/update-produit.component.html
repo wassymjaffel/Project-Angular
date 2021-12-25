@@ -1,0 +1,109 @@
+
+
+ <div class="main-header">
+
+
+ <body cdkDropListGroup>
+
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <div class="container  ">
+        <div class="row">
+            <div class="col-12" >
+                <div class="card m-b-30"  >
+                    <div class="card-body row">
+                        <div class="col-6">
+                            <a href=""><img src="https://www.dlm-management.ch/wp-content/uploads/2017/10/221DF3BA-84EA-451A-BFD3-0956333B65C9.png" alt="" style="width: 300px;" class="img-fluid rounded-circle w-60"></a>
+                        </div>
+                        <div class="col-6 card-title align-self-center mb-0">
+                            <span>idStock :{{stock.idStock}}</span>
+                            <p class="m-0">LibelleStock :{{stock.libelleStock}}</p>
+                        </div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Quantité: :{{stock.qte}}</li>
+                        <li class="list-group-item">Quantité Min : {{stock.qteMin}}</li>
+
+        <h3 style="color:green">product list:</h3>
+                    </ul>
+                    <ul class="drop-area" style="border: #ccc dashed; padding: 50px"  cdkDropList  [cdkDropListData]="produitcontainer" (cdkDropListDropped)="drop($event)">
+
+
+
+
+
+
+                        <div class="row">
+                            <div class="card col-2"  *ngFor="let u of this.produitcontainer"  style="width: 12rem; font-size:small;"  cdkDrag>
+                                <div class="card-header" style="background-color:rgb(47, 255, 168);" >
+
+                                    produit:{{u.idProduit}}
+                                </div>
+                                <ul class="list-group list-group-flush" >
+                                  <li class="list-group-item">code:{{u.code}}</li>
+                                  <li class="list-group-item">libelle:{{u.lieblle}}</li>
+                                  <li class="list-group-item">prixUnitaire:{{u.prixUnitaire}}</li>
+
+                                </ul>
+                              </div>
+                            </div>
+
+
+
+
+                </ul>
+                    <div class="card-body">
+                        <div class="float-right btn-group btn-group-sm">
+                            </div>
+                        <ul class="social-links list-inline mb-0">
+                            <button class="btn btn-success" (click)="save()">save</button>
+
+                            <button class="btn btn-danger"(click)="cancel()" >cancel</button>
+                              </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div >
+    <div >
+        <h1 style="color:rgb(12, 6, 92);" >product list</h1>
+    <div cdkDropList  [cdkDropListData]="produit" (cdkDropListDropped)="drop($event)"  class="row border"  style="width: 90%; ">
+
+    <div class="card col-2 border border-info "  *ngFor="let u of produit" cdkDrag style="width: 12rem; font-size:small;">
+
+        <div class="card-header"  style="background-color:rgba(63, 125, 241, 0.452);">
+          Produit:{{u.idProduit}}
+        </div>
+        <ul class="list-group list-group-flush">
+
+          <li class="list-group-item">code:{{u.code}}</li>
+          <li class="list-group-item">libelle:{{u.lieblle}}</li>
+          <li class="list-group-item">prixUnitaire:{{u.prixUnitaire}}</li>
+
+        </ul>
+      </div>
+    </div>
+    </div>
+    </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <router-outlet></router-outlet>
+</div>
